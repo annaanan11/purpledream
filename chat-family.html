@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>聊天室 - 溫刀</title>
+  <title>聊天室 - 姐姐</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Helvetica Neue', sans-serif;
-      background-color: #000;
+      background: url('https://i.imgur.com/3VNDU9F.png') no-repeat center center fixed;
       background-size: cover;
       position: relative;
       color: white;
@@ -81,7 +81,9 @@
       flex-direction: column;
       align-items: flex-start;
       margin-bottom: 8px;
-      margin-left: 38px;
+    }
+    .msg-group .msg-wrapper {
+      margin-left: 0;
     }
     .msg-wrapper.from-player {
       align-items: flex-end;
@@ -143,18 +145,18 @@
   <div class="chat-container">
     <div class="chat-header">
       <a href="index.html">&#x276E; 99+</a>
-      <img src="famili.png" alt="溫刀頭像">
-      <span>溫刀</span>
+      <img src="https://annaanan11.github.io/purpledream/images/sister.jpg" alt="姐姐頭像">
+      <span>姐姐</span>
     </div>
     <div class="chat-box">
       <div class="msg-group">
-        <img class="msg-avatar" src="famili.png" alt="姐姐頭像">
+        <img class="msg-avatar" src="https://annaanan11.github.io/purpledream/images/sister.jpg" alt="姐姐頭像">
         <div class="msg-wrapper">
           <div class="msg">你還記得我們以前養的貓嗎</div>
           <div class="timestamp">上午 10:17</div>
         </div>
       </div>
-      <div class="msg-wrapper">
+      <div class="msg-wrapper" style="margin-left: 38px;">
         <div class="msg">牠好像也不見了</div>
         <div class="timestamp">上午 10:18</div>
       </div>
@@ -163,13 +165,13 @@
         <div class="timestamp">上午 10:19</div>
       </div>
       <div class="msg-group">
-        <img class="msg-avatar" src="famili.png" alt="姐姐頭像">
+        <img class="msg-avatar" src="https://annaanan11.github.io/purpledream/images/sister.jpg" alt="姐姐頭像">
         <div class="msg-wrapper">
           <div class="msg">我有點怕</div>
           <div class="timestamp">上午 10:21</div>
         </div>
       </div>
-      <div class="msg-wrapper">
+      <div class="msg-wrapper" style="margin-left: 38px;">
         <div class="msg">不是怕死，是怕活著沒有人</div>
         <div class="timestamp">上午 10:22</div>
       </div>
@@ -178,7 +180,7 @@
         <div class="timestamp">上午 10:23</div>
       </div>
       <div class="msg-group">
-        <img class="msg-avatar" src="famili.png" alt="姐姐頭像">
+        <img class="msg-avatar" src="https://annaanan11.github.io/purpledream/images/sister.jpg" alt="姐姐頭像">
         <div class="msg-wrapper">
           <div class="msg">對不起，我太煩了</div>
           <div class="timestamp">上午 10:24</div>
@@ -193,15 +195,8 @@
   </div>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      localStorage.setItem('read-family', 'true');
+      <div class="chat-item" data-chat-id="family">
     });
   </script>
-
-  <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    localStorage.setItem('read-sister', 'true');
-  });
-</script>
-
 </body>
 </html>
