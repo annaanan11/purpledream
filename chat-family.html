@@ -2,69 +2,99 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>姐姐的LINE聊天室</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>聊天室</title>
   <style>
     body {
       font-family: 'Helvetica Neue', sans-serif;
+      background-color: #111;
       margin: 0;
-      background: #e5e5e5;
+      padding: 0;
+      color: white;
     }
     .chat-container {
-      max-width: 480px;
-      margin: 0 auto;
       width: 100vw;
       height: 100dvh;
+      max-width: 480px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      background: white;
+      background-color: #111;
     }
     .chat-header {
-      background: #00c300;
+      background-color: #111;
       color: white;
       padding: 15px;
       font-weight: bold;
+      font-size: 20px;
+      border-bottom: 1px solid #333;
+      display: flex;
+      align-items: center;
+    }
+    .chat-header img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin-right: 10px;
     }
     .chat-box {
-      flex: 1;
-      padding: 10px;
+      flex-grow: 1;
       overflow-y: auto;
-      background-color: #f7f7f7;
+      padding: 10px;
     }
     .msg {
+      margin: 10px 0;
       max-width: 75%;
       padding: 10px;
       border-radius: 10px;
-      margin: 10px 0;
+      clear: both;
       word-wrap: break-word;
+      position: relative;
+      font-size: 14px;
     }
-    .from-sister { background: #dcf8c6; float: left; clear: both; }
-    .from-player { background: #fff; float: right; opacity: 0.5; clear: both; }
+    .from-sister {
+      background-color: #2a2f32;
+      float: left;
+    }
+    .from-player {
+      background-color: #005c4b;
+      float: right;
+    }
+    .timestamp {
+      font-size: 10px;
+      color: #888;
+      margin-top: 3px;
+      text-align: right;
+    }
     .chat-input {
       display: flex;
       padding: 10px;
-      border-top: 1px solid #ccc;
+      border-top: 1px solid #333;
+      background: #1a1a1a;
     }
     .chat-input input {
-      flex: 1;
-      border: 1px solid #ccc;
-      border-radius: 20px;
+      flex-grow: 1;
       padding: 10px;
-      font-size: 16px;
+      border: 1px solid #333;
+      border-radius: 20px;
+      background-color: #222;
+      color: white;
+      font-size: 14px;
     }
     .chat-input button {
-      margin-left: 10px;
-      padding: 0 15px;
-      background: #00c300;
-      color: white;
+      background-color: #00c300;
       border: none;
+      color: white;
+      padding: 10px 15px;
+      margin-left: 10px;
       border-radius: 50%;
-      font-size: 18px;
+      font-size: 16px;
+      cursor: not-allowed;
     }
     .disabled-msg {
-      font-size: 12px;
-      color: #999;
       text-align: center;
+      color: #666;
+      font-size: 12px;
       margin-top: 10px;
       clear: both;
     }
@@ -72,14 +102,17 @@
 </head>
 <body>
   <div class="chat-container">
-    <div class="chat-header">姐姐</div>
+    <div class="chat-header">
+      <img src="https://annaanan11.github.io/purpledream/images/sister.jpg" alt="姐姐頭像">
+      姐姐
+    </div>
     <div class="chat-box">
-      <div class="msg from-sister">你還記得我們以前養的貓嗎</div>
-      <div class="msg from-sister">牠好像也不見了</div>
-      <div class="msg from-sister">我有點怕</div>
-      <div class="msg from-sister">不是怕死，是怕活著沒有人</div>
-      <div class="msg from-sister">對不起，我太煩了</div>
-      <div class="msg from-player">……我在</div>
+      <div class="msg from-sister">你還記得我們以前養的貓嗎<div class="timestamp">上午 10:17</div></div>
+      <div class="msg from-sister">牠好像也不見了<div class="timestamp">上午 10:18</div></div>
+      <div class="msg from-sister">我有點怕<div class="timestamp">上午 10:19</div></div>
+      <div class="msg from-sister">不是怕死，是怕活著沒有人<div class="timestamp">上午 10:21</div></div>
+      <div class="msg from-sister">對不起，我太煩了<div class="timestamp">上午 10:23</div></div>
+      <div class="msg from-player">……我在<div class="timestamp">上午 10:25</div></div>
       <div class="disabled-msg">訊息未送出</div>
     </div>
     <div class="chat-input">
@@ -87,5 +120,12 @@
       <button disabled>➤</button>
     </div>
   </div>
+
+  <script>
+    // 標記聊天室為已讀
+    window.addEventListener('DOMContentLoaded', () => {
+      localStorage.setItem('read-sister', 'true');
+    });
+  </script>
 </body>
 </html>
