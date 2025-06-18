@@ -29,6 +29,10 @@
       padding: 12px 15px;
       border-bottom: 1px solid #333;
       position: relative;
+      cursor: pointer;
+    }
+    .chat-item:hover {
+      background-color: #1a1a1a;
     }
     .chat-item img {
       width: 50px;
@@ -65,51 +69,80 @@
       padding: 3px 8px;
       font-weight: bold;
     }
+    a.chat-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
   </style>
 </head>
 <body>
   <div class="chat-container">
     <div class="chat-header">Chats</div>
 
-    <div class="chat-item">
-      <img src="https://i.imgur.com/E7E4F1N.png" alt="國慶">
-      <div class="chat-text">
-        <div class="chat-title">國慶 family (34)</div>
-        <div class="chat-preview">@All 記得歸位</div>
+    <a class="chat-link" href="chat-family.html">
+      <div class="chat-item" data-chat-id="family">
+        <img src="https://i.imgur.com/E7E4F1N.png" alt="國慶">
+        <div class="chat-text">
+          <div class="chat-title">國慶 family (34)</div>
+          <div class="chat-preview">@All 記得歸位</div>
+        </div>
+        <div class="chat-time">12:02</div>
+        <div class="badge">2</div>
       </div>
-      <div class="chat-time">12:02</div>
-      <div class="badge">2</div>
-    </div>
+    </a>
 
-    <div class="chat-item">
-      <img src="https://i.imgur.com/ZZd2c3k.jpg" alt="貓">
-      <div class="chat-text">
-        <div class="chat-title">九九九</div>
-        <div class="chat-preview">要不要直接去看然後就能快躺了</div>
+    <a class="chat-link" href="chat-cat.html">
+      <div class="chat-item" data-chat-id="cat">
+        <img src="https://i.imgur.com/ZZd2c3k.jpg" alt="貓">
+        <div class="chat-text">
+          <div class="chat-title">九九九</div>
+          <div class="chat-preview">要不要直接去看然後就能快躺了</div>
+        </div>
+        <div class="chat-time">昨日</div>
+        <div class="badge">1</div>
       </div>
-      <div class="chat-time">昨日</div>
-      <div class="badge">1</div>
-    </div>
+    </a>
 
-    <div class="chat-item">
-      <img src="https://i.imgur.com/KeRyo6g.jpg" alt="X">
-      <div class="chat-text">
-        <div class="chat-title">X</div>
-        <div class="chat-preview">生日快樂寶寶</div>
+    <a class="chat-link" href="chat-x.html">
+      <div class="chat-item" data-chat-id="x">
+        <img src="https://i.imgur.com/KeRyo6g.jpg" alt="X">
+        <div class="chat-text">
+          <div class="chat-title">X</div>
+          <div class="chat-preview">生日快樂寶寶</div>
+        </div>
+        <div class="chat-time">週六</div>
+        <div class="badge">1</div>
       </div>
-      <div class="chat-time">週六</div>
-      <div class="badge">1</div>
-    </div>
+    </a>
 
-    <div class="chat-item">
-      <img src="https://i.imgur.com/pH2MZQe.jpg" alt="Pet Park">
-      <div class="chat-text">
-        <div class="chat-title">寵物公園 Pet Park</div>
-        <div class="chat-preview">19大品牌零食加1元多1件 🐶🐱</div>
+    <a class="chat-link" href="chat-pet.html">
+      <div class="chat-item" data-chat-id="pet">
+        <img src="https://i.imgur.com/pH2MZQe.jpg" alt="Pet Park">
+        <div class="chat-text">
+          <div class="chat-title">寵物公園 Pet Park</div>
+          <div class="chat-preview">19大品牌零食加1元多1件 🐶🐱</div>
+        </div>
+        <div class="chat-time">12:08</div>
+        <div class="badge">29</div>
       </div>
-      <div class="chat-time">12:08</div>
-      <div class="badge">29</div>
-    </div>
+    </a>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-chat-id]').forEach(chatItem => {
+        const chatId = chatItem.getAttribute('data-chat-id');
+        const isRead = localStorage.getItem(`read-${chatId}`);
+        if (isRead === 'true') {
+          const badge = chatItem.querySelector('.badge');
+          if (badge) badge.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+
   </div>
 </body>
 </html>
