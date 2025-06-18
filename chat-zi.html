@@ -71,31 +71,33 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
+      margin-right: 8px;
       flex-shrink: 0;
     }
     .msg-wrapper {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin-left: 8px;
+      margin-left: 38px;
     }
     .msg-wrapper.from-player {
-      flex-direction: row-reverse;
-      align-self: flex-end;
-      margin-left: 0;
+      align-items: flex-end;
+      margin-left: auto;
       margin-right: 0;
     }
-    .from-player .msg {
-      background-color: #005c4b;
-      align-self: flex-end;
-    }
     .msg {
-      max-width: 90%;
+      max-width: none;
+      width: fit-content;
+      max-width: 90;
       padding: 10px;
       border-radius: 15px;
       font-size: 14px;
       background-color: #2a2f32;
+      position: relative;
       word-wrap: break-word;
+    }
+    .from-player .msg {
+      background-color: #005c4b;
     }
     .timestamp {
       font-size: 10px;
@@ -118,8 +120,12 @@
       height: 1px;
       background: #444;
     }
-    .disabled-msg::before { left: 0; }
-    .disabled-msg::after { right: 0; }
+    .disabled-msg::before {
+      left: 0;
+    }
+    .disabled-msg::after {
+      right: 0;
+    }
     .chat-input {
       display: flex;
       padding: 10px;
@@ -151,69 +157,66 @@
   <div class="chat-container">
     <div class="chat-header">
       <a href="index.html">&#x276E; 99+</a>
-      <img src="drum.jpg" alt="紫頭像">
+      <img src="cat.jpg" alt="紫頭像">
       <span>紫</span>
     </div>
     <div class="chat-box">
-      <div class="msg-wrapper from-player">
-        <img src="" id="photo-player" class="msg-avatar" alt="我">
-        <div class="msg">欸欸</div>
-      </div>
+      <!-- 前段訊息 -->
+      <div class="disabled-msg">一個月前</div>
       <div class="msg-group">
-        <img class="msg-avatar" src="drum.jpg" alt="紫頭像">
-        <div class="msg-wrapper">
-          <div class="msg">？</div>
+        <img class="msg-avatar" src="cat.jpg" alt="紫頭像">
+        <div class="msg-wrapper" style="margin-left: 0;">
+          <div class="msg">明天校園祭要來嗎？</div>
           <div class="timestamp">上午 10:17</div>
         </div>
       </div>
+      <div class="msg-wrapper">
+        <div class="msg">幫你留VIP了</div>
+        <div class="timestamp">上午 10:18</div>
+      </div>
       <div class="msg-wrapper from-player">
-        <img src="" id="photo-player" class="msg-avatar" alt="我">
+        <div class="msg">不去</div>
+        <div class="timestamp"> 上午 10:19</div>
+      </div>
+      <div class="disabled-msg">上週前</div>
+      <div class="msg-wrapper from-player">
+        <div class="msg">欸欸</div>
+        <div class="timestamp"> 上午 10:19</div>
+      </div>
+      <div class="msg-wrapper from-player">
         <div class="msg">你看</div>
-        <div class="timestamp">已讀 上午 10:19</div>
+        <div class="timestamp"> 上午 10:19</div>
       </div>
-      <div class="chat-container">
-      <div class="msg-wrapper from-player">
-        <img src="" id="photo-player" class="msg-avatar" alt="我">
-        <div class="msg"><img src="" id="photo-player" class="msg-avatar" alt="我"></div>
-        <div class="timestamp">已讀 上午 10:19</div>
-      </div>
-      <div class="chat-container">
-       <div class="chat-header">
-        <a href="index.html">&#x276E; 99+</a>
-        <img src="drum.jpg" alt="紫頭像">
-        <span>紫</span>
-         </div>
-     <div class="msg-group">
-        <img src="drum.jpg" alt="紫頭像">
-        <div class="msg-wrapper">
+      <div class="msg-group">
+        <img class="msg-avatar" src="cat.jpg" alt="紫頭像">
+        <div class="msg-wrapper" style="margin-left: 0;">
           <div class="msg">...</div>
-          <div class="timestamp">前天 9:21</div>
-        </div>
-        <div class="msg-wrapper">
-          <div class="msg">謝謝。</div>
           <div class="timestamp">前天 9:21</div>
         </div>
       </div>
       <div class="msg-wrapper">
-        <div class="msg">我心情不好/div>
-        <div class="timestamp">前天 2:22</div>
+        <div class="msg">謝謝</div>
+        <div class="timestamp">前天 9:22</div>
       </div>
-      <div class="msg-group">
-        <img class="msg-avatar" src="cat.jpg" alt="媽媽頭像">
-        <div class="msg-wrapper">
-          <div class="msg">你有空嗎？</div>
-          <div class="timestamp">昨日 2:24</div>
-        </div>
+      <div class="msg-wrapper from-player">
+        <div class="msg">我心情不好</div>
+        <div class="timestamp"> 上午 10:19</div>
       </div>
+      <div class="msg-wrapper from-player">
+        <div class="msg">你有空嗎</div>
+        <div class="timestamp"> 上午 10:19</div>
+      </div>
+
+      <!-- 未讀提示 -->
       <div class="disabled-msg">未讀訊息</div>
       <div class="msg-group">
-        <img src="drum.jpg" alt="紫頭像">
-        <div class="msg-wrapper">
+        <img class="msg-avatar" src="cat.jpg" alt="紫頭像">
+        <div class="msg-wrapper" style="margin-left: 0;">
           <div class="msg">我在忙</div>
-          <div class="timestamp">昨日 10:24</div>
+          <div class="timestamp">前天 9:21</div>
         </div>
       </div>
-    </div>
+      
 
     <div class="chat-input">
       <input type="text" placeholder="Aa" disabled>
@@ -223,11 +226,7 @@
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      const photo = localStorage.getItem('player-photo');
-      const imgs = document.querySelectorAll('#photo-player');
-      imgs.forEach(img => { if (photo) img.src = photo; });
-
-      localStorage.setItem('read-zi', 'true');
+      localStorage.setItem('read-mom', 'true');
     });
   </script>
 </body>
