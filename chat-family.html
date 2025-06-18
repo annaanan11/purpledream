@@ -94,6 +94,11 @@
       position: relative;
       word-wrap: break-word;
     }
+    .msg img {
+      max-width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
     .from-player .msg {
       background-color: #005c4b;
     }
@@ -159,7 +164,6 @@
       <span>溫刀</span>
     </div>
     <div class="chat-box">
-      <!-- 前段訊息 -->
       <div class="msg-group">
         <img class="msg-avatar" src="mon.jpg" alt="爸頭像">
         <div class="msg-wrapper" style="margin-left: 0;">
@@ -186,23 +190,22 @@
         <div class="msg">什麼時候回家？</div>
         <div class="timestamp">前天 10:22</div>
       </div>
+
+      <!-- 圖片訊息 -->
       <div class="msg-group">
         <img class="msg-avatar" src="mon.jpg" alt="爸頭像">
         <div class="msg-wrapper" style="margin-left: 0;">
-          <div class="msg">
-            <img src="dadmeme.jpg" alt="爸爸梗圖">
+          <div class="msg"><img src="dadmeme.jpg" alt="爸爸梗圖"></div>
           <div class="timestamp">昨日 10:24</div>
         </div>
       </div>
-        <div class="msg-wrapper" style="margin-left: 0;">
-          <div class="msg">現在東西越來越貴了！！</div>
-          <div class="timestamp">昨日 10:25</div>
-        </div>
+      <div class="msg-wrapper">
+        <div class="msg">現在東西越來越貴了！！</div>
+        <div class="timestamp">昨日 10:25</div>
+      </div>
 
-      <!-- 未讀提示 -->
       <div class="disabled-msg">未讀訊息</div>
 
-      <!-- 新訊息 -->
       <div class="msg-group">
         <img class="msg-avatar" src="cat.jpg" alt="媽媽頭像">
         <div class="msg-wrapper" style="margin-left: 0;">
@@ -220,7 +223,7 @@
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      localStorage.setItem('read-mom', 'true');
+      localStorage.setItem('read-wen', 'true');
     });
   </script>
 </body>
