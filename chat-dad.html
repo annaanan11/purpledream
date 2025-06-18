@@ -10,8 +10,6 @@
       padding: 0;
       font-family: 'Helvetica Neue', sans-serif;
       background-color: #000;
-      background-size: cover;
-      position: relative;
       color: white;
     }
     body::before {
@@ -67,7 +65,7 @@
     .msg-group {
       display: flex;
       align-items: flex-start;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
     .msg-avatar {
       width: 30px;
@@ -80,32 +78,37 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin-bottom: 8px;
     }
-    .msg-group .msg-wrapper {
-      margin-left: 0;
-    }
-    .msg-wrapper.from-player {
-      align-items: flex-end;
-      margin-left: auto;
-      margin-right: 0;
-    }
-    .msg {
+    .msg img {
       max-width: 70%;
-      padding: 10px;
-      border-radius: 15px;
-      font-size: 14px;
-      background-color: #2a2f32;
-      position: relative;
-      word-wrap: break-word;
-    }
-    .from-player .msg {
-      background-color: #005c4b;
+      border-radius: 10px;
     }
     .timestamp {
       font-size: 10px;
       color: #aaa;
-      margin-top: 2px;
+      margin-top: 4px;
+    }
+    .disabled-msg {
+      text-align: center;
+      color: #666;
+      font-size: 12px;
+      margin: 15px 0;
+      position: relative;
+    }
+    .disabled-msg::before,
+    .disabled-msg::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: #444;
+    }
+    .disabled-msg::before {
+      left: 0;
+    }
+    .disabled-msg::after {
+      right: 0;
     }
     .chat-input {
       display: flex;
@@ -132,30 +135,8 @@
       font-size: 16px;
       cursor: not-allowed;
     }
-    .disabled-msg {
-      text-align: center;
-      color: #666;
-      font-size: 12px;
-      margin: 10px 0;
-      clear: both;
-    }
   </style>
 </head>
-
-  <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('[data-chat-id]').forEach(chatItem => {
-      const chatId = chatItem.getAttribute('data-chat-id');
-      const isRead = localStorage.getItem(`read-${chatId}`);
-      if (isRead === 'true') {
-        const badge = chatItem.querySelector('.badge');
-        if (badge) badge.style.display = 'none';
-      }
-    });
-  });
-</script>
-
-  
 <body>
   <div class="chat-container">
     <div class="chat-header">
@@ -164,50 +145,20 @@
       <span>爸</span>
     </div>
     <div class="chat-box">
-      <div class="msg-group">
-        <img class="msg-avatar" src="mon.jpg" alt="爸頭像">
-        <div class="msg-wrapper">
-          <img src="o1.jpg" alt=長輩1">
-          <div class="timestamp">上午 7:30</div>
-        </div>
-      </div>
-     <div class="msg-group">
-        <img class="msg-avatar" src="mon.jpg" alt="爸頭像">
-        <div class="msg-wrapper">
-          <img src="o2.jpg" alt=長輩2">
-          <div class="timestamp">上午 7:30</div>
-        </div>
-      </div>
-      <div class="msg-group">
-        <img class="msg-avatar" src="mon.jpg" alt="爸頭像">
-        <div class="msg-wrapper">
-          <img src="o3.jpg" alt=長輩3">
-          <div class="timestamp">上午 7:30</div>
-        </div>
-      </div>
-      <div class="msg-group">
-        <img class="msg-avatar" src="mon.jpg" alt="爸頭像">
-        <div class="msg-wrapper">
-          <img src="o4.jpg" alt=長輩4">
-          <div class="timestamp">上午 7:30</div>
-        </div>
-      </div>
-      <div class="msg-group">
-        <img class="msg-avatar" src="mon.jpg" alt="爸頭像">
-        <div class="msg-wrapper">
-          <img src="o5.jpg" alt=長輩5">
-          <div class="timestamp">上午 7:30</div>
-        </div>
-      </div>
+      <!-- 已讀訊息 -->
+      <div class="msg-group"><img class="msg-avatar" src="mon.jpg" alt="爸頭像"><div class="msg-wrapper"><div class="msg"><img src="o1.jpg" alt="長輩1"></div><div class="timestamp">上午 7:30</div></div></div>
+      <div class="msg-group"><img class="msg-avatar" src="mon.jpg" alt="爸頭像"><div class="msg-wrapper"><div class="msg"><img src="o2.jpg" alt="長輩2"></div><div class="timestamp">上午 7:30</div></div></div>
+      <div class="msg-group"><img class="msg-avatar" src="mon.jpg" alt="爸頭像"><div class="msg-wrapper"><div class="msg"><img src="o3.jpg" alt="長輩3"></div><div class="timestamp">上午 7:30</div></div></div>
+      <div class="msg-group"><img class="msg-avatar" src="mon.jpg" alt="爸頭像"><div class="msg-wrapper"><div class="msg"><img src="o4.jpg" alt="長輩4"></div><div class="timestamp">上午 7:30</div></div></div>
+      <div class="msg-group"><img class="msg-avatar" src="mon.jpg" alt="爸頭像"><div class="msg-wrapper"><div class="msg"><img src="o5.jpg" alt="長輩5"></div><div class="timestamp">上午 7:30</div></div></div>
+
+      <!-- 未讀提示 -->
       <div class="disabled-msg">未讀訊息</div>
+
+      <!-- 新訊息 -->
+      <div class="msg-group"><img class="msg-avatar" src="mon.jpg" alt="爸頭像"><div class="msg-wrapper"><div class="msg"><img src="o6.jpg" alt="長輩6"></div><div class="timestamp">上午 7:31</div></div></div>
     </div>
-    <div class="msg-group">
-        <img class="msg-avatar" src="mon.jpg" alt="爸頭像">
-        <div class="msg-wrapper">
-          <img src="o6.jpg" alt=長輩6">
-          <div class="timestamp">上午 7:30</div>
-        </div>
-      </div>
+
     <div class="chat-input">
       <input type="text" placeholder="Aa" disabled>
       <button disabled>➤</button>
@@ -215,15 +166,8 @@
   </div>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      <div class="chat-item" data-chat-id=mom">
+      localStorage.setItem('read-dad', 'true');
     });
   </script>
-
-    <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    localStorage.setItem('read-dad', 'true');
-  });
-</script>
-  
 </body>
 </html>
