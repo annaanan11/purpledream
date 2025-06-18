@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>聊天室 - 親愛ㄟ老母</title>
   <style>
     body {
@@ -10,8 +10,6 @@
       padding: 0;
       font-family: 'Helvetica Neue', sans-serif;
       background-color: #000;
-      background-size: cover;
-      position: relative;
       color: white;
     }
     body::before {
@@ -67,7 +65,7 @@
     .msg-group {
       display: flex;
       align-items: flex-start;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
     .msg-avatar {
       width: 30px;
@@ -80,10 +78,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin-bottom: 8px;
-    }
-    .msg-group .msg-wrapper {
-      margin-left: 0;
+      margin-left: 38px;
     }
     .msg-wrapper.from-player {
       align-items: flex-end;
@@ -105,7 +100,29 @@
     .timestamp {
       font-size: 10px;
       color: #aaa;
-      margin-top: 2px;
+      margin-top: 4px;
+    }
+    .disabled-msg {
+      text-align: center;
+      color: #666;
+      font-size: 12px;
+      margin: 15px 0;
+      position: relative;
+    }
+    .disabled-msg::before,
+    .disabled-msg::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: #444;
+    }
+    .disabled-msg::before {
+      left: 0;
+    }
+    .disabled-msg::after {
+      right: 0;
     }
     .chat-input {
       display: flex;
@@ -132,30 +149,8 @@
       font-size: 16px;
       cursor: not-allowed;
     }
-    .disabled-msg {
-      text-align: center;
-      color: #666;
-      font-size: 12px;
-      margin: 10px 0;
-      clear: both;
-    }
   </style>
 </head>
-
-  <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('[data-chat-id]').forEach(chatItem => {
-      const chatId = chatItem.getAttribute('data-chat-id');
-      const isRead = localStorage.getItem(`read-${chatId}`);
-      if (isRead === 'true') {
-        const badge = chatItem.querySelector('.badge');
-        if (badge) badge.style.display = 'none';
-      }
-    });
-  });
-</script>
-
-  
 <body>
   <div class="chat-container">
     <div class="chat-header">
@@ -164,14 +159,15 @@
       <span>親愛ㄟ老母</span>
     </div>
     <div class="chat-box">
+      <!-- 前段訊息 -->
       <div class="msg-group">
         <img class="msg-avatar" src="cat.jpg" alt="媽媽頭像">
-        <div class="msg-wrapper">
+        <div class="msg-wrapper" style="margin-left: 0;">
           <div class="msg">不要每天跟男生混在一起</div>
           <div class="timestamp">上午 10:17</div>
         </div>
       </div>
-      <div class="msg-wrapper" style="margin-left: 38px;">
+      <div class="msg-wrapper">
         <div class="msg">有掛號了嗎？</div>
         <div class="timestamp">上午 10:18</div>
       </div>
@@ -181,48 +177,46 @@
       </div>
       <div class="msg-group">
         <img class="msg-avatar" src="cat.jpg" alt="媽媽頭像">
-        <div class="msg-wrapper">
+        <div class="msg-wrapper" style="margin-left: 0;">
           <div class="msg">天氣冷了，外套有帶去學校嗎？</div>
           <div class="timestamp">前天 9:21</div>
         </div>
       </div>
-      <div class="msg-wrapper" style="margin-left: 38px;">
+      <div class="msg-wrapper">
         <div class="msg">什麼時候回家？</div>
         <div class="timestamp">前天 10:22</div>
       </div>
-
       <div class="msg-group">
         <img class="msg-avatar" src="cat.jpg" alt="媽媽頭像">
-        <div class="msg-wrapper">
+        <div class="msg-wrapper" style="margin-left: 0;">
           <div class="msg">阿妹生日要買蛋糕嗎？</div>
           <div class="timestamp">昨日 10:24</div>
         </div>
-     </div>
+      </div>
+
+      <!-- 未讀提示 -->
       <div class="disabled-msg">未讀訊息</div>
-    </div>
-    <div class="msg-group">
+
+      <!-- 新訊息 -->
+      <div class="msg-group">
         <img class="msg-avatar" src="cat.jpg" alt="媽媽頭像">
-        <div class="msg-wrapper">
+        <div class="msg-wrapper" style="margin-left: 0;">
           <div class="msg">少花點錢，媽媽工作不穩定</div>
           <div class="timestamp">昨日 10:24</div>
         </div>
-     </div>
+      </div>
+    </div>
+
     <div class="chat-input">
       <input type="text" placeholder="Aa" disabled>
       <button disabled>➤</button>
     </div>
   </div>
+
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      <div class="chat-item" data-chat-id=mom">
+      localStorage.setItem('read-mom', 'true');
     });
   </script>
-
-    <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    localStorage.setItem('read-mom', 'true');
-  });
-</script>
-  
 </body>
 </html>
