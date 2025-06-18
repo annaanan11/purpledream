@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IKEA 廣告頁面</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+    }
+    .ad-container {
+      max-width: 480px;
+      margin: 0 auto;
+      background-color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .ad-header {
+      background-color: #0058a3;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .ad-content {
+      padding: 20px;
+      text-align: center;
+    }
+    .ad-content img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .ad-title {
+      font-size: 20px;
+      margin: 15px 0 5px 0;
+    }
+    .ad-desc {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .ad-button {
+      background-color: #fcd116;
+      color: #000;
+      border: none;
+      padding: 15px;
+      margin: 0 20px 30px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .ad-footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aaa;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="ad-container">
+    <div class="ad-header">IKEA 家居特惠</div>
+    <div class="ad-content">
+      <img src="https://www.ikea.com/images/a-modern-living-room-with-a-light-grey-sofa-black-coffee-table-and-ae330a3ed4f2e2d839dfab69f432645f.jpg?f=xxs" alt="IKEA Living Room">
+      <div class="ad-title">你的新生活，從這裡開始。</div>
+      <div class="ad-desc">IKEA 精選沙發、書櫃、燈具，限時優惠中。打造屬於你的北歐風格日常！</div>
+      <button class="ad-button" onclick="location.href='https://www.ikea.com/tw/zh/'">立即逛逛</button>
+    </div>
+    <div class="ad-footer">IKEA Taiwan | 廣告僅供展示用途</div>
+  </div>
+</body>
+</html>
