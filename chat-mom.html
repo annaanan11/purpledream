@@ -141,6 +141,21 @@
     }
   </style>
 </head>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-chat-id]').forEach(chatItem => {
+      const chatId = chatItem.getAttribute('data-chat-id');
+      const isRead = localStorage.getItem(`read-${chatId}`);
+      if (isRead === 'true') {
+        const badge = chatItem.querySelector('.badge');
+        if (badge) badge.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+  
 <body>
   <div class="chat-container">
     <div class="chat-header">
@@ -194,5 +209,12 @@
       <div class="chat-item" data-chat-id=mom">
     });
   </script>
+
+    <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    localStorage.setItem('read-mom', 'true');
+  });
+</script>
+  
 </body>
 </html>
