@@ -118,7 +118,7 @@
 
     <a class="chat-link" href="chat-sister.html">
       <div class="chat-item" data-chat-id="sister">
-        <img src="https://i.imgur.com/pH2MZQe.jpg" alt="妹仔">
+        <img src=""id="photo-sister" alt="妹仔">
         <div class="chat-text">
           <div class="chat-title">妹仔</div>
           <div class="chat-preview">記得買我喜歡的泡芙</div>
@@ -165,5 +165,11 @@
       });
     });
   </script>
+  <script>
+  const savedSisterPhoto = localStorage.getItem('sister-photo');
+  if (savedSisterPhoto) {
+    document.getElementById('photo-sister').src = savedSisterPhoto;
+  }
+</script>
 </body>
 </html>
