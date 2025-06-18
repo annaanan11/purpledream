@@ -58,10 +58,22 @@
       display: flex;
       flex-direction: column;
     }
+    .msg-group {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 5px;
+    }
+    .msg-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
     .msg-wrapper {
       display: flex;
       align-items: flex-end;
-      margin-bottom: 8px;
+      margin-bottom: 2px;
     }
     .msg {
       max-width: 70%;
@@ -77,9 +89,6 @@
       bottom: 0;
       width: 0;
       height: 0;
-    }
-    .from-sister {
-      align-self: flex-start;
     }
     .from-sister .msg {
       background-color: #2a2f32;
@@ -151,36 +160,55 @@
       <span>姐姐</span>
     </div>
     <div class="chat-box">
-      <div class="msg-wrapper from-sister">
-        <div class="msg">你還記得我們以前養的貓嗎</div>
+      <!-- 姐姐第一段訊息（含頭像） -->
+      <div class="msg-group">
+        <img class="msg-avatar" src="https://annaanan11.github.io/purpledream/images/sister.jpg" alt="姐姐頭像">
+        <div>
+          <div class="msg from-sister">你還記得我們以前養的貓嗎</div>
+          <div class="timestamp">上午 10:17</div>
+        </div>
       </div>
-      <div class="timestamp">上午 10:17</div>
-
+      <!-- 姐姐連續訊息 -->
       <div class="msg-wrapper from-sister">
         <div class="msg">牠好像也不見了</div>
       </div>
       <div class="timestamp">上午 10:18</div>
 
-      <div class="msg-wrapper from-sister">
-        <div class="msg">我有點怕</div>
+      <!-- 玩家回覆 -->
+      <div class="msg-wrapper from-player">
+        <div class="msg">我記得。牠那時常躲床底。</div>
       </div>
-      <div class="timestamp">上午 10:19</div>
+      <div class="timestamp" style="text-align:right">上午 10:19</div>
 
+      <!-- 姐姐第二段訊息（重新顯示頭像） -->
+      <div class="msg-group">
+        <img class="msg-avatar" src="https://annaanan11.github.io/purpledream/images/sister.jpg" alt="姐姐頭像">
+        <div>
+          <div class="msg from-sister">我有點怕</div>
+          <div class="timestamp">上午 10:21</div>
+        </div>
+      </div>
       <div class="msg-wrapper from-sister">
         <div class="msg">不是怕死，是怕活著沒有人</div>
       </div>
-      <div class="timestamp">上午 10:21</div>
+      <div class="timestamp">上午 10:22</div>
 
-      <div class="msg-wrapper from-sister">
-        <div class="msg">對不起，我太煩了</div>
-      </div>
-      <div class="timestamp">上午 10:23</div>
-
+      <!-- 玩家回覆 -->
       <div class="msg-wrapper from-player">
-        <div class="msg">……我在</div>
+        <div class="msg">我一直都在</div>
       </div>
-      <div class="timestamp" style="text-align:right">上午 10:25</div>
+      <div class="timestamp" style="text-align:right">上午 10:23</div>
 
+      <!-- 姐姐第三段訊息（重新顯示頭像） -->
+      <div class="msg-group">
+        <img class="msg-avatar" src="https://annaanan11.github.io/purpledream/images/sister.jpg" alt="姐姐頭像">
+        <div>
+          <div class="msg from-sister">對不起，我太煩了</div>
+          <div class="timestamp">上午 10:24</div>
+        </div>
+      </div>
+
+      <!-- 訊息未送出 -->
       <div class="disabled-msg">訊息未送出</div>
     </div>
     <div class="chat-input">
