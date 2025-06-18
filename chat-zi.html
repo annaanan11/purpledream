@@ -241,15 +241,29 @@
 
     <script>
   window.addEventListener('DOMContentLoaded', () => {
-    const playerPhoto = localStorage.getItem('player-photo');
-    const uploadedImages = document.querySelectorAll('[data-photo-player]');
-    uploadedImages.forEach(img => {
-      if (playerPhoto) img.src = playerPhoto;
+    const photo = localStorage.getItem('player-photo');
+    const img = document.getElementById('photo-player'); // 單一張玩家圖片（例如破圖來源）
+
+    if (photo && img) {
+      img.src = photo;
+    } else if (img) {
+      img.style.display = 'none';
+    }
+
+    // 也可以處理多張玩家上傳圖片（聊天圖）
+    const uploadedImgs = document.querySelectorAll('[data-photo-player]');
+    uploadedImgs.forEach(el => {
+      if (photo) {
+        el.src = photo;
+      } else {
+        el.remove(); // 或 el.style.display = 'none';
+      }
     });
 
-    localStorage.setItem('read-zi', 'true');
+    localStorage.setItem('read-zi', 'true'); // 自己的已讀邏輯
   });
 </script>
+
 
 
   <script>
