@@ -1,18 +1,108 @@
 <!DOCTYPE html>
-<html lang="zh-Haut">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>上傳照片</title>
+  <title>開始體驗</title>
   <style>
-    body{
+    body {
       background: #000;
       color: white;
-      font-family:'Helvetica Neue', sans-serif;
+      font-family: 'Helvetica Neue', sans-serif;
       margin: 0;
       padding: 20px;
       text-align: center;
     }
-    
+    input[type="file"] {
+      margin: 10px 0;
+    }
+    .preview-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 20px 0;
+    }
+    .preview-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .preview-block img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #333;
+    }
+    button {
+      background: #00c300;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
   </style>
 </head>
+<body>
+  <h2>請上傳頭像</h2>
+  <p>妹妹頭像</p>
+  <input type="file" accept="image/*" id="upload-sister">
+  <p>你的照片</p>
+  <input type="file" accept="image/*" id="upload-player">
+
+  <div class="preview-container">
+    <div class="preview-block">
+      <img id="sister-preview" src="" alt="妹妹預覽">
+      <p style="font-size: 12px;">妹妹</p>
+    </div>
+    <div class="preview-block">
+      <img id="player-preview" src="" alt="玩家預覽">
+      <p style="font-size: 12px;">你</p>
+    </div>
+  </div>
+
+  <button id="start-btn">開始體驗</button>
+
+  <script>
+    const sisterInput = document.getElementById('upload-sister');
+    const playerInput = document.getElementById('upload-player');
+    const sisterPreview = document.getElementById('sister-preview');
+    const playerPreview = document.getElementById('player-preview');
+
+    sisterInput.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = e => {
+          sisterPreview.src = e.target.result;
+          localStorage.setItem('sister-photo', e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    playerInput.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = e => {
+          playerPreview.src = e.target.result;
+          localStorage.setItem('player-photo', e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById('start-btn').addEventListener('click', () => {
+      // 檢查是否上傳兩張圖
+      if (!localStorage.getItem('sister-photo') || !localStorage.getItem('player-photo')) {
+        alert("請先上傳兩張頭像！");
+        return;
+      }
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
