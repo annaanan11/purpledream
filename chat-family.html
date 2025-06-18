@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>姐姐的LINE聊天室</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      background: #e5e5e5;
+    }
+    .chat-container {
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100vw;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+    .chat-header {
+      background: #00c300;
+      color: white;
+      padding: 15px;
+      font-weight: bold;
+    }
+    .chat-box {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background-color: #f7f7f7;
+    }
+    .msg {
+      max-width: 75%;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 10px 0;
+      word-wrap: break-word;
+    }
+    .from-sister { background: #dcf8c6; float: left; clear: both; }
+    .from-player { background: #fff; float: right; opacity: 0.5; clear: both; }
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+    .chat-input input {
+      flex: 1;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .chat-input button {
+      margin-left: 10px;
+      padding: 0 15px;
+      background: #00c300;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+    }
+    .disabled-msg {
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      margin-top: 10px;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">姐姐</div>
+    <div class="chat-box">
+      <div class="msg from-sister">你還記得我們以前養的貓嗎</div>
+      <div class="msg from-sister">牠好像也不見了</div>
+      <div class="msg from-sister">我有點怕</div>
+      <div class="msg from-sister">不是怕死，是怕活著沒有人</div>
+      <div class="msg from-sister">對不起，我太煩了</div>
+      <div class="msg from-player">……我在</div>
+      <div class="disabled-msg">訊息未送出</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="你想回覆什麼..." disabled>
+      <button disabled>➤</button>
+    </div>
+  </div>
+</body>
+</html>
