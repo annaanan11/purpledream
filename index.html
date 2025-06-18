@@ -77,6 +77,14 @@
   </style>
 </head>
 <body>
+
+  <script>
+  // 當頁面被載入時，標記這個聊天室為已讀
+  window.addEventListener('DOMContentLoaded', () => {
+    localStorage.setItem('read-x', 'true');  // 這邊的 'x' 對應 index 裡的 chat-id
+  });
+</script>
+
   <div class="chat-container">
     <div class="chat-header">Chats</div>
 
