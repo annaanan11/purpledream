@@ -239,6 +239,20 @@
     </div>
   </div>
 
+    <div class="msg-group from-player">
+  <img src="" class="msg-avatar player-avatar" alt="我">
+  <div class="msg-wrapper from-player">
+    <div class="msg clickable">欸欸</div>
+    <div class="timestamp">上午 10:19</div>
+  </div>
+</div>
+
+<!-- 彈出回覆選單 -->
+<div id="reply-popup" style="display: none; position: absolute; background: #222; color: white; padding: 8px 12px; border-radius: 6px; z-index: 999;">
+  我好想你
+</div>
+
+
     <script>
   window.addEventListener('DOMContentLoaded', () => {
     const photo = localStorage.getItem('player-photo');
@@ -263,6 +277,35 @@
     localStorage.setItem('read-zi', 'true'); // 自己的已讀邏輯
   });
 </script>
+
+    <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const replyPopup = document.getElementById('reply-popup');
+
+    document.querySelectorAll('.clickable').forEach(msg => {
+      msg.addEventListener('click', e => {
+        const rect = msg.getBoundingClientRect();
+        replyPopup.style.top = `${rect.bottom + window.scrollY + 4}px`;
+        replyPopup.style.left = `${rect.left + window.scrollX}px`;
+        replyPopup.style.display = 'block';
+      });
+    });
+
+    // 點選 popup 自己後自動消失（也可以加動作）
+    replyPopup.addEventListener('click', () => {
+      alert('你說了：我好想你'); // 你可以換成加一條訊息
+      replyPopup.style.display = 'none';
+    });
+
+    // 點其他地方收起 popup
+    document.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('clickable') && e.target.id !== 'reply-popup') {
+        replyPopup.style.display = 'none';
+      }
+    });
+  });
+</script>
+
 
 
 
